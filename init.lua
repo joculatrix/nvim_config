@@ -17,10 +17,24 @@ require('miniplugs')
 -- MISC PLUGINS
 
 vim.pack.add({
+    { src = Github('folke/snacks.nvim') },
     { src = Github('nvim-lualine/lualine.nvim') },
     { src = Github('nvim-neo-tree/neo-tree.nvim') },
     { src = Github('rachartier/tiny-inline-diagnostic.nvim') },
 })
+
+local snacks = require('snacks')
+snacks.setup({
+    terminal = {
+        enabled = true,
+        shell = 'zsh',
+    },
+})
+vim.keymap.set({'n', 't'}, '<C-/>',
+    function()
+        Snacks.terminal.toggle(nil, { cwd = vim.g.root })
+    end,
+    { desc = 'Toggle terminal (root dir)' })
 
 require('lualine').setup({
     options = {
