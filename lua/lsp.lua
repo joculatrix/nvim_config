@@ -82,3 +82,6 @@ vim.g.rustaceanvim = {
         }
     }
 }
+
+vim.lsp.enable('slint_lsp')
+vim.lsp.enable('tinymist')
